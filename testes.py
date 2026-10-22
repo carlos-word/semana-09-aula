@@ -7,25 +7,25 @@ class turmaTest(unittest.TestCase):
   def setUp(self):
     print('Teste', self._testMethodName, 'sendo executado...');
     self.alunos = [];
-    
+
     self.alunos.append(a.Aluno('Fabio', 'Teixeira', 10));
     self.alunos.append(a.Aluno('Fabiano', 'Teixeira', 8));
-    self.alunos.append(a.Aluno('Melissa', 'Teixeira', -1));    
-    self.alunos.append(a.Aluno('Angela', 'Teixeira', 7));       
-    
+    self.alunos.append(a.Aluno('Melissa', 'Teixeira', -1));
+    self.alunos.append(a.Aluno('Angela', 'Teixeira', 7));
+
     self.turmaObject = t.Turma();
     self.turmaObject.cadastrarAlunos(self.alunos);
-  
+
   def tearDown(self):
-    print('Teste', self._testMethodName, 'finalizado.'); 
-  
-  def testMaior(self):      
+    print('Teste', self._testMethodName, 'finalizado.');
+
+  def testMaior(self):
     self.assertEqual(10, self.turmaObject.maiorNota.nota, 'Erro ao encontrar maior nota');
 
-  def testMenor(self):    
+  def testMenor(self):
     self.assertEqual(7, self.turmaObject.menorNota.nota, 'Erro ao encontrar menor nota');
 
-   def testIntervalo(self):
+  def testIntervalo(self):
     print('Testar se o intervalo de notas está correto.')
     for aluno in self.turmaObject.turma:
       self.assertTrue(0 <= aluno.nota <= 10, 'Nota fora do intervalo de 0 a 10: ' + aluno.mostrarAluno());
