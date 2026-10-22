@@ -4,15 +4,18 @@ class Turma:
     self.menorNota = None;
     self.maiorNota = None;
 
-  def cadastrarAlunos(self, alunos):    
+  def cadastrarAlunos(self, alunos):
     for i in alunos:
+      if i.nota < 0 or i.nota > 10:
+        continue;
+
       self.turma.append(i);
       if((self.menorNota == None) or (self.menorNota.nota > i.nota)):
         self.menorNota = i;
-      elif((self.maiorNota == None) or (self.menorNota.nota < i.nota)):
-        self.maiorNota = i;                 
+      if((self.maiorNota == None) or (self.maiorNota.nota < i.nota)):
+        self.maiorNota = i;
 
-  def mostrarAlunos(self):  
+  def mostrarAlunos(self):
     print('Quantidade de alunos:', len(self.turma));
-    for x in self.turma:      
+    for x in self.turma:
       print(x.mostrarAluno());
